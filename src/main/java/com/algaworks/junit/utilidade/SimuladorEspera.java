@@ -10,6 +10,7 @@ public class SimuladorEspera {
 
     public static void esperar(Duration duration) {
         try {
+            System.out.println(duration.toMillis());
             Thread.sleep(duration.toMillis());
         } catch (Exception ignored) {
 
