@@ -14,7 +14,9 @@ class PessoaTest {
         //assertEquals("Moisés", pessoa.getNome());
         //assertEquals("Guilherme", pessoa.getSobrenome());
 
-        //Executa os dois
+        //Executa os dois teste
+        //Não é interessante ter muita asserções em um único teste.
+        //Avaliar apenas um único cenário
         assertAll("Asserções de pessoas",
                 () -> assertEquals("Moisés", pessoa.getNome()),
                 () -> assertEquals("Guilherme", pessoa.getSobrenome()));
