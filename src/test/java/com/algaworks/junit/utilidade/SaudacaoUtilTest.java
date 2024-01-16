@@ -18,6 +18,7 @@ class SaudacaoUtilTest {
         @Test
         public void deveLancarException() {
             //SaudacaoUtil.saudar(-10); // erro
+            //Executando o Debug com teste (Colocar o break point)
             IllegalArgumentException illegalArgumentException =
                     assertThrows(IllegalArgumentException.class,
                     () -> SaudacaoUtil.saudar(-10));
