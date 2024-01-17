@@ -2,36 +2,35 @@ package com.algaworks.junit.utilidade;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.Random;
-
 import static org.junit.jupiter.api.Assertions.*;
 
-// precisa ter o sufixo Test, algumaCoisaTeste
+import static com.algaworks.junit.utilidade.SaudacaoUtil.saudar;
+
 class SaudacaoUtilTest {
 
-        private static final String SAUDACAO_INCORRETA = "Saudação incorreta!";
-
         @Test
-        public void deveSaudarBomDia() {
-            Random faixaBomDia = new Random();
-            int numeroAleatorioDentroDaFaixaBomDia = faixaBomDia.nextInt(12);
-            String saudacao = SaudacaoUtil.saudar(numeroAleatorioDentroDaFaixaBomDia);
-            System.out.println(">> " + numeroAleatorioDentroDaFaixaBomDia);
-            assertEquals("Bom dia", saudacao, SAUDACAO_INCORRETA);
+        public void saudarComBomDia() {
+            int horaValida = 9;
+            String saudacao = saudar(horaValida);
+            assertEquals("Bom dia", saudacao);
         }
 
 
         @Test
-        public void deveSaudarBoaTarde() {
-            String saudacao = SaudacaoUtil.saudar(12);
-            assertEquals("Boa tarde", saudacao, "Saudação incorreta");
+        public void saudarComBomDiaApartir5h() {
+            int horaValida = 5;
+            String saudacao = saudar(horaValida);
+            assertEquals("Bom dia", saudacao);
         }
 
-        @Test
-        public void deveSaudarBoaNoite() {
-            String saudacao = SaudacaoUtil.saudar(18);
-            assertEquals("Boa noite", saudacao, "Saudação incorreta");
-        }
+
+
+    @Test
+    public void saudarComBoaNoite4h() {
+        int horaValida = 4;
+        String saudacao = saudar(horaValida);
+        assertEquals("Boa noite", saudacao);
+    }
 
 
     @Test
