@@ -2,18 +2,22 @@ package com.algaworks.junit.utilidade;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import java.util.Random;
 
+import static org.junit.jupiter.api.Assertions.*;
 
 // precisa ter o sufixo Test, algumaCoisaTeste
 class SaudacaoUtilTest {
 
+        private static final String SAUDACAO_INCORRETA = "Saudação incorreta!";
+
         @Test
-        public void saudar() {
-            String saudacao = SaudacaoUtil.saudar(9);
-            //System.out.println(saudacao);
-            //Assertions.assertTrue(saudacao.equals("Bom dia"));
-            assertEquals("Bom dia", saudacao, "Saudacão incorreta!");
+        public void deveSaudarBomDia() {
+            Random faixaBomDia = new Random();
+            int numeroAleatorioDentroDaFaixaBomDia = faixaBomDia.nextInt(12);
+            String saudacao = SaudacaoUtil.saudar(numeroAleatorioDentroDaFaixaBomDia);
+            System.out.println(">> " + numeroAleatorioDentroDaFaixaBomDia);
+            assertEquals("Bom dia", saudacao, SAUDACAO_INCORRETA);
         }
 
 
