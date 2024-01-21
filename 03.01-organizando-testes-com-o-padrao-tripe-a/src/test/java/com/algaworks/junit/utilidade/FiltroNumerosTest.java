@@ -1,5 +1,6 @@
 package com.algaworks.junit.utilidade;
 
+import com.algaworks.junit.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
