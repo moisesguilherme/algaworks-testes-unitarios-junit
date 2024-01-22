@@ -12,17 +12,23 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class CalculadoraGanhosTest {
 
+    static CalculadoraGanhos cacluladora;
+    static Editor autor;
+    static Post post;
+
     @BeforeAll
     static void beforeAll() {
-        System.out.println("Antes de todos os testes");
+        cacluladora = new CalculadoraGanhos(new ProcessadorTextoSimples(), BigDecimal.TEN);
     }
 
     @BeforeEach
     void beforeEach() {
-        System.out.println("Antes de cada testee");
+        autor = new Editor(1L, "Alex", "alex@gmail.com", new BigDecimal(5), true);
+
+        post = new Post(1L, "Ecossistema Java", "O ecossistema do Java é muito maduro", autor, "ecossistema-java-abc123", null, false, false);
     }
 
-    @AfterAll
+    /*@AfterAll
     static void afterAll() {
         System.out.println("Depois de todos os testes");
     }
@@ -30,16 +36,11 @@ class CalculadoraGanhosTest {
     @AfterEach
     void afterEach() {
         System.out.println("Depois de cada teste");
-    }
+    }*/
 
 
     @Test
     public void deveCalcularGanhos() {
-        CalculadoraGanhos cacluladora = new CalculadoraGanhos(new ProcessadorTextoSimples(), BigDecimal.TEN);
-
-        Editor autor = new Editor(1L, "Alex", "alex@gmail.com", new BigDecimal(5), true);
-
-        Post post = new Post(1L, "Ecossistema Java", "O ecossistema do Java é muito maduro", autor, "ecossistema-java-abc123", null, false, false);
 
         Ganhos ganhos = cacluladora.calcular(post);
 
@@ -51,11 +52,8 @@ class CalculadoraGanhosTest {
 
     @Test
     public void deveCalcularGanhosSemPremium() {
-        CalculadoraGanhos cacluladora = new CalculadoraGanhos(new ProcessadorTextoSimples(), BigDecimal.TEN);
 
-        Editor autor = new Editor(1L, "Alex", "alex@gmail.com", new BigDecimal(5), false);
-
-        Post post = new Post(1L, "Ecossistema Java", "O ecossistema do Java é muito maduro", autor, "ecossistema-java-abc123", null, false, false);
+        autor.setPremium(false);
 
         Ganhos ganhos = cacluladora.calcular(post);
 
